@@ -4,11 +4,12 @@ from app.web.schemes import OkResponseSchema
 
 
 class UserAddSchema(Schema):
-    email = fields.Str(required=True)
+    # при создании пользователя нам не нужен id
+    email = fields.Str(required=True)  # графа email required-обязательная
 
 
-class UserSchema(UserAddSchema):
-    id = fields.UUID(required=True, attribute="id_")
+class UserSchema(UserAddSchema): # модель пользователя предствляет собой email и id
+    id = fields.UUID(required=True, attribute='id_')
 
 
 class UserGetRequestSchema(Schema):

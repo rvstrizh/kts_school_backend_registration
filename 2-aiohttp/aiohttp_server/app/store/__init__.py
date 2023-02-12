@@ -8,5 +8,5 @@ if typing.TYPE_CHECKING:
 
 def setup_accessors(app: "Application"):
     app.crm_accessor = CrmAccessor()
-    app.on_startup.append(app.crm_accessor.connect)
-    app.on_cleanup.append(app.crm_accessor.disconnect)
+    app.on_startup.append(app.crm_accessor.connect) # при старте приложения нужно выполнить метод crm_accessor
+    app.on_cleanup.append(app.crm_accessor.disconnect) # при моменте чистки приложения

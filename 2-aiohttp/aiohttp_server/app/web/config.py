@@ -8,16 +8,16 @@ if typing.TYPE_CHECKING:
 
 
 @dataclass
-class Config:
+class Config: # в нем будут содержаться только данные
     username: str
     password: str
 
 
-def setup_config(app: "Application"):
-    with open("config/config.yaml", "r") as f:
-        raw_config = yaml.safe_load(f)
+def setup_config(app: "Application"):# при загрузке  приложения нам нужно конфиг чем-то заполнить
+    with open("./config/config.yaml", "r") as f: # нужно взять и считать этот yaml файл
+        raw_config = yaml.safe_load(f) # здесь будет словарь из файла config.yaml
 
     app.config = Config(
         username=raw_config["credentials"]["username"],
-        password=raw_config["credentials"]["password"],
+        password=raw_config["credentials"]["password"]
     )
